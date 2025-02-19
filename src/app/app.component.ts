@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -8,7 +8,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, NavbarComponent, DashboardComponent],
+  imports: [CommonModule, SidebarComponent, NavbarComponent, DashboardComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,6 +16,8 @@ export class AppComponent {
   title = 'admin-dashboard';
   isSidebarToggled = false;
 
+  constructor(public router: Router) {} // Public so it's accessible in HTML
+  
   toggleSidebar() {
     this.isSidebarToggled = !this.isSidebarToggled;
 
