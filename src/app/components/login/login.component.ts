@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
+ 
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
 
+export class LoginComponent {
+  constructor(private router: Router){}
+  onLogin(){
+    this.router.navigate([`/dashboard`]);
+  }
 }

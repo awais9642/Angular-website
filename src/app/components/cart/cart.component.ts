@@ -10,12 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  product:any;
+      // product:any;
     cartItems: any[] = [
-    { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
-    { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
-    { name: 'Headphones', price: 199, image: 'assets/HeadphoneImage.jpeg', quantity: 1 },
-    {name:'WirelessMouse',price:30,image:'assets/mouse-image.jpeg',quantity:1}
+    // { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
+    // { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
+    // { name: 'Headphones', price: 199, image: 'assets/HeadphoneImage.jpeg', quantity: 1 },
+    // {name:'WirelessMouse',price:30,image:'assets/mouse-image.jpeg',quantity:1}
    ];
 
   constructor(private cartService: CartServiceService) {
@@ -24,6 +24,7 @@ export class CartComponent {
 
   removeItem(index: number) {
     this.cartService.removeItem(index);
+    this.cartItems = this.cartService.getCartItems();
   }
 
   clearCart() {
@@ -31,13 +32,14 @@ export class CartComponent {
     this.cartItems = [];
   }
  
-  increaseQuantity(product: any){
-    this.cartService.increaseQuantity(product);
+  increaseQuantity(item: any){
+    this.cartService.increaseQuantity(item);
+    this.cartItems = this.cartService.getCartItems(); 
     // this.cartItems=[];
   }
-  decreaseQuantity(product: any){
-    this.cartService.decreaseQuantity(product);
-    // this.cartItems=[];
+  decreaseQuantity(item: any) {
+    this.cartService.decreaseQuantity(item);
+    this.cartItems = this.cartService.getCartItems(); 
   }
 
 }

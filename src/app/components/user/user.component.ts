@@ -22,8 +22,15 @@ export class UserComponent {
     {name:'WirelessMouse',price:30,image:'assets/mouse-image.jpeg',quantity:1}
   ];
 
-  increaseQuantity(product: any) {
-   this.cartService.increaseQuantity(product);
+  // increaseQuantity(product: any) {
+  //  this.cartService.increaseQuantity(product);
+  // }
+  increaseQuantity(product: any){
+    
+      this.cartService.increaseQuantity(product);
+        
+        return product.quantity;
+      
   }
 
   decreaseQuantity(product: any) {
@@ -34,5 +41,5 @@ export class UserComponent {
     this.cartService.addToCart(product);
     this.router.navigate([`/cart`]);    
     //alert(`${product.name} added to cart!`);
-  }
+ }
 }
