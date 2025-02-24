@@ -3,8 +3,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { CartComponent } from './components/cart/cart.component';
-import { UserComponent } from './components/user/user.component';
-import { CartComponent } from './components/cart/cart.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redirect to login by default
