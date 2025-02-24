@@ -1,0 +1,49 @@
+.container {
+  margin-left: 250px; /* Adjusted for sidebar */
+  padding-top: 70px; /* Adjusted for navbar */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 80%; /* Reduce width to make images smaller */
+  max-height: 180px; /* Limit height to prevent oversized images */
+  object-fit: contain; /* Ensure the full image is shown without cropping */
+  display: block;
+  margin: 0 auto; /* Center the image */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.quantity-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
