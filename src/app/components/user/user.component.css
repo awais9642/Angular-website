@@ -1,49 +1,33 @@
-.container {
-  margin-left: 250px; /* Adjusted for sidebar */
-  padding-top: 70px; /* Adjusted for navbar */
-}
-
-.row {
+/* Smaller and equal card size */
+.equal-card {
+  height: 350px; /* Reduced card height */
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.col-md-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  display: flex;
-  justify-content: center;
-}
-
-.card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+/* Smaller and consistent image size */
+.product-image {
+  height: 200px; /* Smaller image height */
+  object-fit: cover; /* Preserve aspect ratio */
   width: 100%;
 }
 
-.card:hover {
-  transform: scale(1.05);
+/* Container adjustments */
+.container {
+  max-width: 100%;
+  margin: 0 auto; /* Center the container */
 }
 
+/* Button styling for better alignment */
+button {
+  width: 100%;
+}
 .card img {
-  width: 80%; /* Reduce width to make images smaller */
-  max-height: 180px; /* Limit height to prevent oversized images */
-  object-fit: contain; /* Ensure the full image is shown without cropping */
-  display: block;
-  margin: 0 auto; /* Center the image */
+  width: 80%;
+  max-height: 180px;
+  object-fit: contain; 
+  margin: 0 auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-}
-
-.quantity-controls button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-@media (max-width: 768px) {
-  .col-md-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
 }
