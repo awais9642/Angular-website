@@ -5,12 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CartServiceService {
 
-  private cart: any[] = [
-    { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
-    { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
-    { name: 'Headphones', price: 199, image: 'assets/HeadphoneImage.jpeg', quantity: 1 },
-    { name: 'WirelessMouse', price: 30, image: 'assets/mouse-image.jpeg', quantity: 1 }
-  ];
+  private cart: any[] = [];
 
   constructor() { }
 

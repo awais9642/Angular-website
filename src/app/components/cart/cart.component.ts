@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CartServiceService } from '../../Services/cart-service.service';
 import { CommonModule } from '@angular/common';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+// import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-cart',
@@ -10,13 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-      // product:any;
-    cartItems: any[] = [
-    // { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
-    // { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
-    // { name: 'Headphones', price: 199, image: 'assets/HeadphoneImage.jpeg', quantity: 1 },
-    // {name:'WirelessMouse',price:30,image:'assets/mouse-image.jpeg',quantity:1}
-   ];
+  cartItems: any[] = [];
+
+  // Inject dependencies using `inject()`
+  // private cartService = inject(CartServiceService);
+  private dialogRef = inject(MatDialogRef<CartComponent>);
+  // private data = inject(MAT_DIALOG_DATA);
 
   constructor(private cartService: CartServiceService) {
     this.cartItems = this.cartService.getCartItems();
@@ -30,16 +31,21 @@ export class CartComponent {
   clearCart() {
     this.cartService.clearCart();
     this.cartItems = [];
-  }
- 
-  increaseQuantity(item: any){
-    this.cartService.increaseQuantity(item);
-    this.cartItems = this.cartService.getCartItems(); 
-    // this.cartItems=[];
-  }
-  decreaseQuantity(item: any) {
-    this.cartService.decreaseQuantity(item);
-    this.cartItems = this.cartService.getCartItems(); 
+    this.closeDialog()
+
   }
 
+  increaseQuantity(item: any) {
+    this.cartService.increaseQuantity(item);
+    this.cartItems = this.cartService.getCartItems();
+  }
+
+  decreaseQuantity(item: any) {
+    this.cartService.decreaseQuantity(item);
+    this.cartItems = this.cartService.getCartItems();
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }

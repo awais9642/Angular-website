@@ -1,14 +1,14 @@
 .navbar {
     position: fixed;
     top: 0;
-    left: 250px; /* Adjust based on your sidebar width */
+    left: 47px; 
     width: calc(100% - 250px); /* Adjust for sidebar width */
     height: 60px; /* Set a fixed height */
     z-index: 1000;
   }
   
   .navbar.toggled {
-    left: 80px; /* Match the collapsed sidebar width */
+    left: 80px; 
     width: calc(100% - 80px);
   }
   

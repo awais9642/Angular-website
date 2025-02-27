@@ -1,12 +1,13 @@
-<h2>Cart</h2>
+<h2 align="text-center">Cart</h2>
+<button mat-button (click)="closeDialog()">Close</button>
 <div *ngFor="let item of cartItems; let i = index" class="cart-item">
     <img [src]="item.image" alt="{{ item.name }}" width="100">
   <p>{{ item.name }} - ${{ item.price }}</p>
 
-<button class="btn btn-danger" (click)="decreaseQuantity(item)">-</button>
-<span class="mx-3">{{ item.quantity }}</span>
-<button class="btn btn-success" (click)="increaseQuantity(item)">+</button>
-<button (click)="removeItem(i)">Remove</button>
+  <button class="btn btn-danger" (click)="decreaseQuantity(item)">-</button>
+  <span class="mx-3">{{ item.quantity }}</span>
+  <button class="btn btn-success" (click)="increaseQuantity(item)">+</button>
+  <button (click)="removeItem(i)">Remove</button>
 </div>
 <br>
 <button (click)="clearCart()">Clear Cart</button>

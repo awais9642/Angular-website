@@ -13,9 +13,9 @@
   
   /* Main content styling */
   .main-content {
-    margin-left: 250px; /* Same as sidebar width */
+    /* margin-left: 250px; */
     padding: 20px;
-    width: calc(100% - 250px); /* Adjust content width to avoid overlap */
+    width: 100%;
   }
   .toggle-btn {
     position: fixed;
@@ -26,14 +26,16 @@
   }
   
   .main-content {
-    margin-left: 250px;
+    /* margin-left: 250px; */
     margin-top: 60px; /* Account for the navbar height */
     transition: margin-left 0.3s ease;
   }
   
-  .sidebar.toggled + .main-content {
-    margin-left: 80px; /* Adjust for the collapsed sidebar width */
-  }
+  /* .sidebar.toggled + .main-content {
+    
+    
+    margin-left: 80px; 
+  } */
   
   .toggle-btn.toggled {
     left: 90px; /* Adjust to match the collapsed sidebar position */

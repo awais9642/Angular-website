@@ -2,19 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CartServiceService } from '../../Services/cart-service.service';
 import { Router } from '@angular/router';
-
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CartComponent } from '../cart/cart.component'; 
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule],
-  
+  imports: [CommonModule,MatButtonModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  constructor(private cartService: CartServiceService,private router: Router){}
+  cartDialogRef: MatDialogRef<CartComponent> | null = null;
   products = [
     { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
     { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
@@ -34,6 +34,25 @@ export class UserComponent {
     {name:'Alone T Shirt',price:170,image:'assets/AloneTshirt.jpeg',quantity:1}
 
   ];
+  constructor(public dialog: MatDialog,private cartService: CartServiceService,private router: Router){}
+  openCartPopup() {
+    if (!this.cartDialogRef) {
+      this.cartDialogRef = this.dialog.open(CartComponent, {
+        height:'350px',
+        width: '100%',
+        data: { cartItems: this.products }
+      });
+
+      // Reset reference when the dialog is closed
+      this.cartDialogRef.afterClosed().subscribe(() => {
+        this.cartDialogRef = null;
+      });
+    }
+  }
+
+    closeDialog() {
+    this.dialog.closeAll();
+  }
   increaseQuantity(product: any){
     
       this.cartService.increaseQuantity(product);
@@ -48,7 +67,8 @@ export class UserComponent {
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
-    this.router.navigate([`/cart`]);     
-    //alert(`${product.name} added to cart!`);
+    // this.router.navigate([`/cart`]);   
+    this.openCartPopup();  
+    
  }
 }
