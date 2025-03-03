@@ -1,14 +1,15 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
-import { routes } from './app.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 import { provideClientHydration } from '@angular/platform-browser';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [importProvidersFrom(MatDialogModule),provideRouter(routes), provideClientHydration()]
+  providers: [
+    importProvidersFrom(MatDialogModule),
+    importProvidersFrom(ReactiveFormsModule),
+    provideRouter(routes),
+    provideClientHydration()
+  ]
 };
-
-// function provideDialog(): import("@angular/core").Provider | import("@angular/core").EnvironmentProviders {
-//   throw new Error('Function not implemented.');
-// }
-

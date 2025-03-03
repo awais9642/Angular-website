@@ -1,0 +1,19 @@
+<h2>Cart Form</h2>
+<form [formGroup]="cartForm" (ngSubmit)="onSubmit()">
+  <label>First Name:</label>
+  <input type="text" formControlName="firstName" required />
+
+  <label>Last Name:</label>
+  <input type="text" formControlName="lastName" required />
+
+  <label>Email:</label>
+  <input type="email" formControlName="email" required />
+
+  <label>Contact:</label>
+  <input type="text" formControlName="contact" required />
+
+  <label>Order Summary:</label>
+  <textarea formControlName="orderSummary"></textarea>
+
+  <button type="submit" [disabled]="cartForm.invalid">Submit Order</button>
+</form>
