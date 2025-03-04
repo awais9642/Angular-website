@@ -1,43 +1,42 @@
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .order-summary {
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
-  }
-  
-  label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
-  
+
+/* Form Styling */
+.cart-form {
+  max-width: 450px; /* Smaller Form Width */
+  margin: 0 auto; /* Center the form */
+}
+
+/* Make the Heading Smaller */
+h2 {
+  font-size: 24px; /* Smaller heading size */
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Input Fields Styling */
+input,
+textarea {
+  width: 100%; /* Make inputs take full width of form */
+  padding: 8px; /* Comfortable padding */
+  margin-top: 5px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Button Styling */
+.button-container {
+  text-align: center; /* Center the button */
+}
+
+button {
+  padding: 10px 25px; /* Make button smaller */
+  background-color: #28a745; /* Green color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
