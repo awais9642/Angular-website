@@ -16,10 +16,10 @@ export class CartComponent {
 
   // Inject dependencies using `inject()`
   // private cartService = inject(CartServiceService);
-  private dialogRef = inject(MatDialogRef<CartComponent>);
+ // private dialogRef = inject(MatDialogRef<CartComponent>);
   // private data = inject(MAT_DIALOG_DATA);
 
-  constructor(private cartService: CartServiceService) {
+  constructor(private dialogRef: MatDialogRef<CartComponent>,private cartService: CartServiceService) {
     this.cartItems = this.cartService.getCartItems();
   }
 
