@@ -6,9 +6,7 @@
         <div class="card-body text-center">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">Price: ${{ product.price }}</p>
-          <button (click)="addToCart(product)" class="btn btn-primary">
-            Add to Cart
-          </button>
+          <button mat-raised-button color="primary" (click)="addToCart(product)">Add to Cart</button>
           <!-- <button mat-button (click)="openCartPopup()">View Cart</button> -->
         </div>
       </div>

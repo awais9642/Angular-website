@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CartServiceService } from '../../Services/cart-service.service';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from '../cart/cart.component'; 
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule,MatButtonModule],
+  imports: [CommonModule,MatButtonModule, MatDialogModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -34,12 +34,14 @@ export class UserComponent {
     {name:'Alone T Shirt',price:170,image:'assets/AloneTshirt.jpeg',quantity:1}
 
   ];
-  constructor(public dialog: MatDialog,private cartService: CartServiceService,private router: Router){}
+  constructor(private dialog: MatDialog,private cartService: CartServiceService,private router: Router){}
   openCartPopup() {
     if (!this.cartDialogRef) {
       this.cartDialogRef = this.dialog.open(CartComponent, {
-        height:'350px',
-        width: '100%',
+        width: '400px',  
+        height: 'auto',
+        disableClose: true,  
+        panelClass: 'custom-dialog-container',
         data: { cartItems: this.products }
       });
 

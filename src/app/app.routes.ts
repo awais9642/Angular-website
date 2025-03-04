@@ -6,6 +6,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartformComponent }  from './cartform/cartform.component';
 
 
+
+
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redirect to login by default
   { path: 'auth', component: LoginComponent }, // Login page
