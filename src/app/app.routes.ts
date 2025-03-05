@@ -3,7 +3,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { CartComponent } from './components/cart/cart.component';
-import { CartformComponent }  from './cartform/cartform.component';
+import { CartformComponent }  from './components/cartform/cartform.component';
 
 
 
