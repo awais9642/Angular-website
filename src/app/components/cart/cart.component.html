@@ -1,6 +1,9 @@
 <div class="dialog-box">
-  <h2 align="center">Cart</h2>
-<button mat-button (click)="closeDialog()">Close</button>
+  <h2 class="cart-title">Cart</h2>
+<button  class="close-btn" (click)="closeDialog()">
+  <!-- Close -->
+  <span style='font-size:18px; border: none'>&#10060;</span>
+</button>
 <div *ngFor="let item of cartItems; let i = index" class="cart-item">
     <img [src]="item.image" alt="{{ item.name }}" width="100">
   <p>{{ item.name }} - ${{ item.price }}</p>
@@ -8,8 +11,9 @@
   <button class="btn btn-danger" (click)="decreaseQuantity(item)">-</button>
   <span class="mx-3">{{ item.quantity }}</span>
   <button class="btn btn-success" (click)="increaseQuantity(item)">+</button>
-  <button (click)="removeItem(i)">Remove</button>
+  <button class="remove-btn" (click)="removeItem(i)">Remove</button>
 </div>
 <br>
-<button (click)="clearCart()">Clear Cart</button>
+<button class="clear-btn" (click)="clearCart()">Clear Cart</button>
+<button class="checkout-btn" (click)="checkout()">Checkout</button>
 </div>
