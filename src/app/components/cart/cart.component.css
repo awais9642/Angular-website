@@ -1,9 +1,11 @@
 .cart-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
     border-bottom: 1px solid #ddd;
     padding: 10px;
+    
   }
   
   .product-image {
@@ -16,15 +18,68 @@
   .product-details {
     flex: 1;
   }
+  .cart-title {
+    color: blue;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 50px;
+}
 
   .dialog-box {
-    position: fixed;
+    position:fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: rgb(226, 225, 233);
     padding: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 1000;
+    width: 50%;
   }
+
+  .close-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:red;
+    color:white;
+    border:none;
+    padding:5px,10px;
+    cursor:pointer;
+    border-radius: 5px;
+  }
+
+  .remove-btn{
+    background:#dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.clear-btn, .checkout-btn {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.clear-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.checkout-btn {
+    background: #198754;
+    color: white;
+}  
