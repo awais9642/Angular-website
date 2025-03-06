@@ -15,7 +15,7 @@ export class DashboardComponent implements AfterViewInit {
     Chart.register(...registerables);
   }
 
-  
+
   ngAfterViewInit(): void {
     // Ensure this runs only on the client side (browser)
     if (isPlatformBrowser(this.platformId)) {
@@ -34,6 +34,7 @@ export class DashboardComponent implements AfterViewInit {
                 fill: true,
               },
             ],
+            
           },
           options: {
             responsive: true,
