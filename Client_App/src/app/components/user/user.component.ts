@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component,OnInit  } from '@angular/core';
 import { CartServiceService } from '../../Services/cart-service.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { CartComponent } from '../cart/cart.component'; 
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../Services/api.service';
 
 @Component({
   selector: 'app-user',
@@ -13,13 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
-export class UserComponent {
-
- 
+export class UserComponent implements OnInit{
 
   cartDialogRef: MatDialogRef<CartComponent> | null = null;
   products = [
-    { name: 'Laptop', price: 999, image: 'assets/LaptopImage.jpeg', quantity: 1 },
+    { name: '', price:0, image: 'assets/LaptopImage.jpeg', quantity: 1 },
     { name: 'Smartphone', price: 599, image: 'assets/PhoneImage.jpg', quantity: 1 },
     { name: 'Headphone', price: 199, image: 'assets/HeadphoneImage.jpeg', quantity: 1 },
     {name:'Wireless Mouse',price:30,image:'assets/mouse-image.jpeg',quantity:1},
@@ -37,7 +36,7 @@ export class UserComponent {
     {name:'Alone T-Shirt',price:170,image:'assets/AloneTshirt.jpeg',quantity:1}
 
   ];
-  constructor(private dialog: MatDialog,private cartService: CartServiceService,private router: Router){}
+  constructor(private dialog: MatDialog,private cartService: CartServiceService,private router: Router,private apiService: ApiService){}
   openCartPopup() {
     if (!this.cartDialogRef) {
       this.cartDialogRef = this.dialog.open(CartComponent, {
@@ -79,5 +78,20 @@ export class UserComponent {
     this.openCartPopup();  
     
  }
+ ngOnInit() {
+    this.apiService.getProductsList().subscribe({
+      next:(data)=>{
+        console.log('Products Comes correctly:');
+        console.log(data);
+        this.products=data;
+      },
+      error: (error) => {
+        console.error('Error fetching users:', error);
+      },
+      complete: () => {
+        console.log('Task Completed'); // Optional
+      }
+    });
+  }
 }
  
