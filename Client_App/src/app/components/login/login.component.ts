@@ -21,16 +21,7 @@ export class LoginComponent  implements OnInit{
     this.router.navigate([`/dashboard`]);
   }
   ngOnInit() {
-    // this.apiService.getUsers().subscribe(
-    //   (data) => {
-    //     console.log('API Response:'); // ✅ Debugging
-    //     console.log(data); // ✅ Debugging
-    //     //this.users = data;
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching users:', error);
-    //   }
-    // );
+
     this.apiService.getUsers().subscribe({
       next: (data) => {
         console.log('API Response:'); // ✅ Debugging
@@ -69,6 +60,19 @@ export class LoginComponent  implements OnInit{
           console.log('Congraulations'); // Optional
         }
       });
+
+      // this.apiService.getProductsList().subscribe({
+      //   next:(data)=>{
+      //     console.log('Products Comes correctly:');
+      //     console.log(data);
+      //   },
+      //   error: (error) => {
+      //     console.error('Error fetching users:', error);
+      //   },
+      //   complete: () => {
+      //     console.log('Task Completed'); // Optional
+      //   }
+      // });
   }
 
   // ngOnInit() {}

@@ -52,6 +52,16 @@ app.get('/products', (req, res) => {
     });
 });
 
+app.get('/product_details', (req, res) => {
+    db.query('SELECT * FROM product_details', (err, results) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 // API Route to Add a New User
 // app.post('/users', (req, res) => {
 //     const { name, email } = req.body;

@@ -20,7 +20,11 @@ export class ApiService {
       return this.http.get<any[]>('http://localhost:3000/users');
  }
  getProducts(): Observable<any>{
-  return this.http.get<any[]>('http://localhost:3000/users');
+  return this.http.get<any[]>('http://localhost:3000/products');
+ }
+
+ getProductsList(): Observable<any>{
+  return this.http.get<any[]>('http://localhost:3000/product_details');
  }
 
 }
