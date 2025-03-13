@@ -57,6 +57,7 @@ export class UserComponent {
     }
   }
 
+  
     closeDialog() {
     this.dialog.closeAll();
   }
