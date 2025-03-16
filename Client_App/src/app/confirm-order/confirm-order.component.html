@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="text-center">Confirm Order</h2>
+    <div class="product-info">
+      <img [src]="product.image" alt="Product Image" class="product-image" />
+      <p><strong>Name:</strong> {{ product.name }}</p>
+      <p><strong>Price:</strong> {{ product.price}}</p>
+      <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+    </div>
+  
+     
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      <label><strong>First Name:</strong>
+        <input formControlName="firstName" type="text" />
+      </label>
+      <label><strong>Last Name:</strong>
+        <input formControlName="lastName" type="text" />
+      </label>
+      <label><strong>Email:</strong>
+        <input formControlName="email" type="email" />
+      </label>
+      <label><strong>Contact Number:</strong>
+        <input formControlName="contactNumber" type="tel" />
+      </label>
+      <label><strong>Address:</strong>
+        <input formControlName="address" type="text" />
+      </label>
+      <label><strong>Order Summary:</strong>
+        <textarea formControlName="orderSummary"></textarea>
+      </label>
+      <button class="Confirm-Order-btn" type="submit" >Confirm Order</button>
+      <!-- [disabled]="orderForm.invalid" -->
+    </form>
+  </div>

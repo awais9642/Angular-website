@@ -1,0 +1,56 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  .product-info {
+    margin-bottom: 20px;
+  }
+  .product-image {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  button:disabled {
+    background-color: #ccc;
+  }
+  .text-center{
+    color:#007bff;
+  }
+  .Confirm-Order-btn{
+    width: 100%;
+    padding: 10px;
+    background: #28a745; /* Green */
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+  }
+  .Confirm-Order-btn:hover{
+    background: #218838;
+  }
+  

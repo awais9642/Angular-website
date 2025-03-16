@@ -16,50 +16,52 @@ import { ApiService } from '../../Services/api.service';
 export class LoginComponent  implements OnInit{
 
   users: any[] = [];
-  constructor(private router: Router,private apiService: ApiService){}
+  constructor(private router: Router,private apiService: ApiService){
+    
+  }
   onLogin(){
     this.router.navigate([`/dashboard`]);
   }
   ngOnInit() {
 
-    this.apiService.getUsers().subscribe({
-      next: (data) => {
-        console.log('API Response:'); // ✅ Debugging
-        console.log(data); // ✅ Debugging
-        // this.users = data;
-      },
-      error: (error) => {
-        console.error('Error fetching users:', error);
-      },
-      complete: () => {
-        console.log('Request completed'); // Optional
-      }
-    });
-      this.apiService.getList().subscribe({
-        next:(data)=>{
-          console.log('UserList Comes:');
-          console.log(data);
-        },
-        error: (error) => {
-          console.error('Error fetching users:', error);
-        },
-        complete: () => {
-          console.log('Request'); // Optional
-        }
-      });
+    // this.apiService.getUsers().subscribe({
+    //   next: (data) => {
+    //     console.log('API Response:'); // ✅ Debugging
+    //     console.log(data); // ✅ Debugging
+    //     // this.users = data;
+    //   },
+    //   error: (error) => {
+    //     console.error('Error fetching users:', error);
+    //   },
+    //   complete: () => {
+    //     console.log('Request completed'); // Optional
+    //   }
+    // });
+      // this.apiService.getList().subscribe({
+      //   next:(data)=>{
+      //     console.log('UserList Comes:');
+      //     console.log(data);
+      //   },
+      //   error: (error) => {
+      //     console.error('Error fetching users:', error);
+      //   },
+      //   complete: () => {
+      //     console.log('Request'); // Optional
+      //   }
+      // });
 
-      this.apiService.getProducts().subscribe({
-        next:(data)=>{
-          console.log('Products Comes:');
-          console.log(data);
-        },
-        error: (error) => {
-          console.error('Error fetching users:', error);
-        },
-        complete: () => {
-          console.log('Congraulations'); // Optional
-        }
-      });
+      // this.apiService.getProducts().subscribe({
+      //   next:(data)=>{
+      //     console.log('Products Comes:');
+      //     console.log(data);
+      //   },
+      //   error: (error) => {
+      //     console.error('Error fetching users:', error);
+      //   },
+      //   complete: () => {
+      //     console.log('Congraulations'); // Optional
+      //   }
+      // });
 
       // this.apiService.getProductsList().subscribe({
       //   next:(data)=>{

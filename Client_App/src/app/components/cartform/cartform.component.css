@@ -3,6 +3,9 @@
 .cart-form {
   max-width: 450px; /* Smaller Form Width */
   margin: 0 auto; /* Center the form */
+  padding:20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 /* Make the Heading Smaller */

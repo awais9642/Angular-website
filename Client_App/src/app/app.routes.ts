@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartformComponent }  from './components/cartform/cartform.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redirect to login by default
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent }, // Dashboard page
   { path:'user', component: UserComponent },
   { path: 'cart', component: CartComponent },
-  {path: "cartform" ,component:CartformComponent}
+  {path: "cartform" ,component:CartformComponent},
+  {path:"confirmorder",component:ConfirmOrderComponent}
 ];
 export const appRouting = provideRouter(routes);
