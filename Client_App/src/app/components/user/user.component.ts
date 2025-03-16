@@ -56,6 +56,7 @@ export class UserComponent implements OnInit{
     }
   }
 
+  
     closeDialog() {
     this.dialog.closeAll();
   }
