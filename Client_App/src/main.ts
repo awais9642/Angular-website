@@ -10,8 +10,6 @@ import { provideRouter } from '@angular/router';
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
-
-
     provideHttpClient(),
     importProvidersFrom(ReactiveFormsModule),
     provideRouter(routes)

@@ -2,25 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../Services/api.service';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 // import { provideRouter, Routes } from '@angular/router';
  
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 
 export class LoginComponent  implements OnInit{
 
-  users: any[] = [];
-  constructor(private router: Router,private apiService: ApiService){
-    
-  }
-  onLogin(){
-    this.router.navigate([`/dashboard`]);
+  email = '';
+  password = '';
+
+  constructor(private router: Router,private apiService: ApiService){}
+  
+  onLogin(): void {
+    this.apiService.Login(this.email, this.password).subscribe(
+      (response) => {
+        if (response.success) {
+          this.router.navigate(['/dashboard']);
+        }
+      },
+      (error) => {
+        alert(error.error.message);
+      }
+    );
   }
   ngOnInit() {
 
