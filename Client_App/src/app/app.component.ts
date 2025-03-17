@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LoginComponent } from './components/login/login.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',

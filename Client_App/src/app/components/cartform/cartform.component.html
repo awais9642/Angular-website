@@ -5,35 +5,30 @@
   </div>
   <div class="form-group">
     <label>First Name:</label>
-    <input type="text" formControlName="firstName" required />
+    <input type="text" [(ngModel)]="userData.firstName" name="firstName" formControlName="firstName" required />
   </div>
 
   <div class="form-group">
     <label>Last Name:</label>
-    <input type="text" formControlName="lastName" required />
-  </div>
-
-  <div class="form-group">
-    <label>Email:</label>
-    <input type="email" formControlName="email" required />
+    <input type="text" [(ngModel)]="userData.lastName" name="lastName" formControlName="lastName" required />
   </div>
 
   <div class="form-group">
     <label>Contact:</label>
-    <input type="text" formControlName="contact" required />
+    <input type="text" [(ngModel)]="userData.contact" name="contact" formControlName="contact" required />
   </div>
 
   <div class="form-group">
     <label>Address:</label>
-    <input type="text" formControlName="address" required />
+    <input type="text" [(ngModel)]="userData.address" name="address" formControlName="address" required />
   </div>
 
   <div class="form-group">
     <label>Order Summary:</label>
-    <textarea formControlName="orderSummary"></textarea>
+    <textarea [(ngModel)]="userData.orderSummary" name="orderSummary" formControlName="orderSummary"></textarea>
   </div>
 
   <div class="form-group button-container">
-    <button type="submit"  (click)=onCartForm()>Submit Order</button>
+    <button type="submit"  (click)=submitForm()>Submit Order</button>
   </div>
 </form>
