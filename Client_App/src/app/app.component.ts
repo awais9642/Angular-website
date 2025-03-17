@@ -5,11 +5,12 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LoginComponent } from './components/login/login.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, LoginComponent,SidebarComponent, NavbarComponent, DashboardComponent, RouterModule],
+  imports: [CommonModule, LoginComponent,SidebarComponent, NavbarComponent, DashboardComponent, RouterModule,ConfirmOrderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
