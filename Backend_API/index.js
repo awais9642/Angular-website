@@ -129,6 +129,21 @@ app.post('/checkout', (req, res) => {
 //     });
 // });
 
+app.get('/cartinfo', (req, res) => {
+    const email = req.query.email; // Get email from query params
+
+    if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+    }
+
+    const sql = 'SELECT * FROM userdata WHERE email = ?';
+    db.query(sql, [email], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(results);
+    });
+});
 app.get('/product_details', (req, res) => {
     db.query('SELECT * FROM product_details', (err, results) => {
         if (err) {
