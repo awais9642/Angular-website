@@ -40,6 +40,7 @@ export class CartformComponent {
       email: 'awais679@gmail.com' // Add email here
     }).subscribe(response => {
       console.log('Response:', response);
+      this.router.navigate(['/confirmorder']);
     }, error => {
       console.error('Error:', error);
     });

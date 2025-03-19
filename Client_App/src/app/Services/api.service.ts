@@ -23,6 +23,11 @@ export class ApiService {
 //   return this.http.get<any[]>('http://localhost:3000/products');
 //  }
 
+getcartinfo(email: string): Observable<any[]> {
+  return this.http.get<any[]>(`http://localhost:3000/cartinfo?email=${email}`);
+}
+
+
  getProductsList(): Observable<any>{
   return this.http.get<any[]>('http://localhost:3000/product_details');
  }

@@ -21,6 +21,7 @@ export class CartComponent {
 
   constructor(private router: Router,private dialogRef: MatDialogRef<CartComponent>,private cartService: CartServiceService) {
     this.cartItems = this.cartService.getCartItems();
+    console.log(this.cartItems);
   }
 
   removeItem(index: number) {
