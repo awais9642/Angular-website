@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-
+  private url='http://localhost:5500';
   // private apiUrl = 'http://localhost:3000/test'; Express server URL
 
   constructor(private http: HttpClient) { }
+ 
 
   // Fetch users from Express backend
 //   getUsers(): Observable<any> {
@@ -24,15 +25,15 @@ export class ApiService {
 //  }
 
  getProductsList(): Observable<any>{
-  return this.http.get<any[]>('http://localhost:3000/product_details');
+  return this.http.get<any[]>(this.url +'/product_details');
  }
 
 Login(email: string, password: string):Observable<any>{
-  return this.http.post('http://localhost:3000/login',{ email, password });
+  return this.http.post(this.url + '/login',{ email, password });
 }
 
 checkout(userdata: any): Observable<any> {
-  return this.http.post('http://localhost:3000/checkout', userdata, {
+  return this.http.post(this.url + '/checkout', userdata, {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   });
 }
