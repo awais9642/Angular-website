@@ -2,10 +2,12 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(bodyParser.json());
 const PORT = 3000;
+const secretKey = 'your_secret_key';  // Replace with a secure key or use environment variables
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -43,20 +45,48 @@ db.connect((err) => {
     }
 });
 
+// app.post('/login', (req, res) => {
+//     const { email, password } = req.body;   
+//     const query = 'SELECT * FROM userdata WHERE email = ? AND password = ?';
+    
+//     db.query(query, [email, password], (err, results) => {
+//         if (err) {
+//             console.error('Error executing query:', err);
+//             res.status(500).json({ success: false, message: 'Internal server error' });
+//         } else {
+//             if (results.length > 0) {
+//                 res.json({ success: true, message: 'Login successful' });
+//             } else {
+//                 res.status(401).json({ success: false, message: 'Invalid credentials' });
+//             }
+//         }
+//     });
+// });
+
 app.post('/login', (req, res) => {
+    debugger;
     const { email, password } = req.body;   
     const query = 'SELECT * FROM userdata WHERE email = ? AND password = ?';
     
     db.query(query, [email, password], (err, results) => {
         if (err) {
             console.error('Error executing query:', err);
-            res.status(500).json({ success: false, message: 'Internal server error' });
+            return res.status(500).json({ success: false, message: 'Internal server error' });
+        }
+
+        if (results.length > 0) {
+            const user = results[0];
+
+            // Generate JWT token
+            const token = jwt.sign(
+                { id: user.id, email: user.email }, 
+                secretKey, 
+                { expiresIn: '1h' } // Token expiration time
+            );
+
+            return res.json({ success: true, message: 'Login successful', token });
         } else {
-            if (results.length > 0) {
-                res.json({ success: true, message: 'Login successful' });
-            } else {
-                res.status(401).json({ success: false, message: 'Invalid credentials' });
-            }
+            return res.status(401).json({ success: false, message: 'Invalid credentials' });
         }
     });
 });
