@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,18 +14,14 @@ app.use(cors({
     origin: 'http://localhost:4200', // Your Angular app URL
     credentials: true
   }));
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'awaisshakir679@gmail.com',  
+        pass: 'xwju gpmb xoel ovuv'
+    }
+})
   
-// app.use(cors());
-
-// const users = [
-//     { id: 1, name: 'Alice' },
-//     { id: 2, name: 'Bob' },
-//     { id: 3, name: 'Charlie' }
-//   ];
-//   // API Endpoint to get users
-// app.get('/users', (req, res) => {
-//     res.json(users);
-//   });
 
 // Create MySQL connection
 const db = mysql.createConnection({
@@ -60,30 +57,7 @@ app.post('/login', (req, res) => {
         }
     });
 });
-//     app.post('/checkout', (req, res) => {
-//   const { firstName, lastName, contact, address, orderSummary, email } = req.body;
 
-//   const query = `
-//     UPDATE userdata 
-//     SET first_name = ?, last_name = ?, contact = ?, address = ?, order_summary = ? 
-//     WHERE email = ?
-//   `;
-
-//   const values = [firstName, lastName, contact, address, orderSummary, email];
-
-//   db.query(query, values, (error, results) => {
-//     if (error) {
-//       console.error('Error executing query:', error);
-//       return res.status(500).json({ success: false, message: 'Internal Server Error' });
-//     }
-
-//     if (results.affectedRows === 0) {
-//       return res.status(404).json({ success: false, message: 'No record found for the provided email' });
-//     }
-
-//     res.json({ success: true, message: 'Row updated successfully' });
-//   });
-// });
 app.post('/checkout', (req, res) => {
     const { firstName, lastName, contact, address, orderSummary, email } = req.body;
   
@@ -97,6 +71,7 @@ app.post('/checkout', (req, res) => {
       WHERE email = ?
     `;
   
+
     const values = [firstName, lastName, contact, address, orderSummary, email];
   
     db.query(query, values, (error, results) => {
@@ -110,9 +85,32 @@ app.post('/checkout', (req, res) => {
       }
   
       res.json({ success: true, message: 'Row updated successfully' });
+
     });
-  });
-  
+          
+});
+
+app.post('/send-confirmation-email',(req,res)=>{
+    console.log('Received request:', req.body); // Add this line
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ success: false, message: 'All fields are required' });
+    }
+const mailOptions = {
+    from: 'awaisshakir679@gmail.com',
+    to : email, //'shakirawais66@gmail.com',
+    subject: 'Order Confirmation',
+    html:`Confirm Order`
+};
+transporter.sendMail(mailOptions,(error,info)=>{
+    if(error){
+        console.error('Error sending email:',error);
+        return res.status(500).json({success:false,message:'failed to send email'});
+    }
+    res.json({success:true,message:'Order confirmation email sent successfully'});
+    
+});
+});
 
 // app.get('/test', (req, res) => {
 //     res.json({ message: 'Express.js is connected to Angular!' });

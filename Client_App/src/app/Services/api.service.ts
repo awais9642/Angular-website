@@ -41,4 +41,13 @@ checkout(userdata: any): Observable<any> {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   });
 }
+
+// confirmOrder(): Observable<any>{
+// return this.http.post('http://localhost:3000/send-confirmation-email',{
+//   //headers:new HttpHeaders({'Content-Type':'application/json'})
+//  });
+// }
+confirmOrder(): Observable<any> {
+  return this.http.post('http://localhost:3000/send-confirmation-email', {email: 'shakirawais66@gmail.com'});
+}
 }

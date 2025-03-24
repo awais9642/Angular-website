@@ -20,7 +20,7 @@ export class LoginComponent  implements OnInit{
   password = '';
 
   constructor(private router: Router,private apiService: ApiService){}
-  
+  //login method start here 
   onLogin(): void {
     this.apiService.Login(this.email, this.password).subscribe(
       (response) => {

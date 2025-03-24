@@ -26,7 +26,7 @@
       <label><strong>Order Summary:</strong>
         <textarea formControlName="orderSummary"></textarea>
       </label>
-      <button class="Confirm-Order-btn" type="submit" >Confirm Order</button>
+      <button class="Confirm-Order-btn" type="submit" (click)=confirmOrder() >Confirm Order</button>
       <!-- [disabled]="orderForm.invalid" -->
     </form>
   </div>

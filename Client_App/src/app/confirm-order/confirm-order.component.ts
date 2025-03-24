@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../Services/api.service';
 
+
 @Component({
   selector: 'app-confirm-order',
   standalone: true,
@@ -27,7 +28,7 @@ export class ConfirmOrderComponent implements OnInit{
 
   orderForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private cartService: CartServiceService,private apiservice:ApiService) {
+  constructor(private fb: FormBuilder, private cartService: CartServiceService,private apiservice:ApiService,private router:Router) {
     this.cartItems = this.cartService.getCartItems();
     console.log(this.cartItems);
     // this.cartinfo = this.apiservice.getcartinfo('awais679@gmail.com');
@@ -68,7 +69,7 @@ export class ConfirmOrderComponent implements OnInit{
 
   // }
   ngOnInit() {
-    this.apiservice.getcartinfo('awais679@gmail.com').subscribe(
+    this.apiservice.getcartinfo('shakirawais66@gmail.com').subscribe(
       (data) => {
         this.cartInfo = data[0]; // Ensure you access the first object in the array
         console.log('Cart info:', this.cartInfo);
@@ -88,7 +89,20 @@ export class ConfirmOrderComponent implements OnInit{
       }
     );
   }
-  
+  confirmOrder(){
+
+   // (this.orderForm.valid)
+      this.apiservice.confirmOrder().subscribe(
+        (response)=>{
+          console.log('Email sent:',response);
+        },
+        (error)=>{
+          console.error('Error sending email:', error);
+        }
+      );
+    
+
+  }
   onSubmit(): void {
     if (this.orderForm.valid) {
       console.log('Order Details:', this.orderForm.value);
