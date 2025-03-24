@@ -25,6 +25,11 @@ export class LoginComponent {
 
   constructor(private router: Router, private apiService: ApiService, private api : ApiService) {}
 
+  // email = '';
+  // password = '';
+
+  //constructor(private router: Router,private apiService: ApiService){}
+  //login method start here 
   onLogin(): void {
     this.apiService.Login(this.email, this.password).subscribe(
       (response) => {

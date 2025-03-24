@@ -37,7 +37,7 @@ export class CartformComponent {
       contact: this.userData.contact,
       address: this.userData.address,
       orderSummary: this.userData.orderSummary,
-      email: 'awais679@gmail.com' // Add email here
+      email: 'shakirawais66@gmail.com' // Add email here
     }).subscribe(response => {
       console.log('Response:', response);
       this.router.navigate(['/confirmorder']);
